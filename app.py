@@ -38,44 +38,88 @@ def ReceivedMessage():
 
         text = util.GetTextUser(message)
 
-        processMessage(text, number)
-
-        print(text)
+        ProcessMessages(text, number)
+        # print (text)
 
         return "EVENT_RECEIVED"
     except:
         return "EVENT_RECEIVED"
 
-    # def GenerateMessage(text, number):
 
+def ProcessMessages(text, number):
+    text = text.lower()
+    listData = []
+
+    if "hi" in text:
+        data = util.TextMessage(
+            "Hola! Gracias por contactarnos. Estamos encantados de ayudarte con tu reserva, Escriba la siguiente palabra  *GOD* para hacer su reservación",
+            number,
+        )
+    elif "GOD" in text:
+        dataMenu = util.ListMessage(number)
+        listData.append(data)
+        listData.append(dataMenu)
+    elif "agency" in text:
+        data = util.TextMessage("This is our agency", number)
+        dataLocation = util.LocationMessage(number)
+        listData.append(data)
+        listData.append(dataLocation)
+    elif "contact" in text:
+        data = util.TextMessage("*Contact center:*\n00783456", number)
+        listData.append(data)
+
+    elif "buy" in text:
+        data = util.ButtonsMessage(number)
+        listData.append(data)
+    elif "sell" in text:
+        data = util.ButtonsMessage(number)
+        listData.append(data)
+
+    elif "sign up" in text:
+        data = util.TextMessage(
+            "Enter this link to register: https://form.jotform.com/222507994363665",
+            number,
+        )
+        listData.append(data)
+
+    elif "log in" in text or "login" in text:
+        data = util.TextMessage(
+            "Enter this link to log in: https://form.jotform.com/222507994363665",
+            number,
+        )
+        listData.append(data)
+
+    else:
+        data = util.TextMessage("I'm sorry, I cant't understand you", number)
+        listData.append(data)
+
+    for item in listData:
+        whatsappservice.SendMessageWhatsapp(item)
+
+
+def GenerateMessage(text, number):
+    text = text.lower()
     if "text" in text:
-        data = util.TextMessage("text", number)
+        data = util.TextMessage("Text", number)
     if "format" in text:
         data = util.TextFormatMessage(number)
+
     if "image" in text:
         data = util.ImageMessage(number)
-    if "audio" in text:
-        data = util.AudioMessage(number)
+
     if "video" in text:
         data = util.VideoMessage(number)
+    if "audio" in text:
+        data = util.AudioMessage(number)
+
     if "document" in text:
-        data = util.FileMessage(number)
+        data = util.DocumentMessage(number)
     if "location" in text:
         data = util.LocationMessage(number)
-    if "interactive" in text:
+    if "button" in text:
+        data = util.ButtonsMessage(number)
+    if "list" in text:
         data = util.ListMessage(number)
-    whatsappservice.SendMessageWhatsapp(data)
-
-
-def processMessage(text, number):
-    print(text)
-    text = text.lower()
-    if "hola" in text:
-        data = util.TextMessage("hola", number)
-    elif "gracias" in text:
-        data = util.TextMessage("gracias", number)
-    else:
-        data = util.TextMessage("default", number)
 
     whatsappservice.SendMessageWhatsapp(data)
 
