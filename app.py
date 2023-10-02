@@ -50,7 +50,7 @@ def ProcessMessages(text, number):
     text = text.lower()
     listData = []
 
-    if "hi" in text:
+    if "Hola" in text:
         data = util.TextMessage(
             "Hola! Gracias por contactarnos. Estamos encantados de ayudarte con tu reserva, Escriba la siguiente palabra  *GOD* para hacer su reservación",
             number,
@@ -59,35 +59,38 @@ def ProcessMessages(text, number):
         dataMenu = util.ListMessage(number)
         listData.append(data)
         listData.append(dataMenu)
-    elif "agency" in text:
-        data = util.TextMessage("This is our agency", number)
-        dataLocation = util.LocationMessage(number)
-        listData.append(data)
-        listData.append(dataLocation)
-    elif "contact" in text:
-        data = util.TextMessage("*Contact center:*\n00783456", number)
-        listData.append(data)
 
-    elif "buy" in text:
-        data = util.ButtonsMessage(number)
+    elif "menu" in text:
+        data = util.TextMessage("👨‍👨‍👧‍👦 Cantidad de invitados 👨‍👨‍👧‍👦", number)
+    elif "menu" in text:
         listData.append(data)
-    elif "sell" in text:
-        data = util.ButtonsMessage(number)
-        listData.append(data)
+        listData.append(dataMenu)
 
-    elif "sign up" in text:
+    elif "menu" in text:
+        data = util.TextMessage("👲 Cantidad de niños 👲", number)
+
+    elif text > 0:
+        data = util.TextMessage("¿Desea un espacio para los niños?", number)
+
+    elif "Si" in text:
+        data = util.TextMessage("🎇 ¿Desea fuego artificial? 🎇", number)
+
+    elif "Si" in text:
         data = util.TextMessage(
-            "Enter this link to register: https://form.jotform.com/222507994363665",
+            "https://elsoldesantiago.com/wp-content/uploads/2020/03/Banda-Real.jpg",
             number,
+        )
+    elif "Si" in text:
+        data = util.TextMessage(
+            "🎇 ¿Desea banda real para su evento?, Con un costo de 10,00 peso. 🎇", number
         )
         listData.append(data)
 
-    elif "log in" in text or "login" in text:
+    elif "Si" in text:
         data = util.TextMessage(
-            "Enter this link to log in: https://form.jotform.com/222507994363665",
+            "Gracias por su reservación, en breve le estaremos contactando para confirmar su reservación.",
             number,
         )
-        listData.append(data)
 
     else:
         data = util.TextMessage("I'm sorry, I cant't understand you", number)

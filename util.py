@@ -7,99 +7,104 @@ def GetTextUser(message):
     elif typeMessage == "interactive":
         interactiveObject = message["interactive"]
         typeInteractive = interactiveObject["type"]
-        
+
         if typeInteractive == "button_reply":
             text = (interactiveObject["button_reply"])["title"]
         elif typeInteractive == "list_reply":
             text = (interactiveObject["list_reply"])["title"]
         else:
-         print("sin mensaje")
+            print("sin mensaje")
 
     else:
-        print ("sin mensaje")
-    
+        print("sin mensaje")
+
     return text
 
 
 def TextMessage(text, number):
     data = {
-            "messaging_product": "whatsapp",
-            "to": number,
-            "text": {
-                "body": text
-            },
-            "type": "text"
-           }
+        "messaging_product": "whatsapp",
+        "to": number,
+        "text": {"body": text},
+        "type": "text",
+    }
     return data
+
 
 def TextFormatMessage(number):
     data = {
-            "messaging_product": "whatsapp",
-            "to": number,
-            "type": "text",
-            "text": {
-                "body": "*Información importante*\n_Necesitas enviar tu correo_\n~Pero tiene que estar~\n```en diferente formato```"
-            }
-        }
+        "messaging_product": "whatsapp",
+        "to": number,
+        "type": "text",
+        "text": {
+            "body": "*Información importante*\n_Necesitas enviar tu correo_\n~Pero tiene que estar~\n```en diferente formato```"
+        },
+    }
     return data
+
 
 def ImageMessage(number):
     data = {
-            "messaging_product": "whatsapp",
-            "to": number,
-            "type": "image",
-            "image": {
-                "link": "https://biostoragecloud.blob.core.windows.net/resource-udemy-whatsapp-node/image_whatsapp.png"
-            }
-        }
+        "messaging_product": "whatsapp",
+        "to": number,
+        "type": "image",
+        "image": {
+            "link": "https://biostoragecloud.blob.core.windows.net/resource-udemy-whatsapp-node/image_whatsapp.png"
+        },
+    }
     return data
+
 
 def AudioMessage(number):
     data = {
-            "messaging_product": "whatsapp",
-            "to": number,
-            "type": "audio",
-            "audio": {
-                "link": "https://biostoragecloud.blob.core.windows.net/resource-udemy-whatsapp-node/audio_whatsapp.mp3"
-            }
-        }
+        "messaging_product": "whatsapp",
+        "to": number,
+        "type": "audio",
+        "audio": {
+            "link": "https://biostoragecloud.blob.core.windows.net/resource-udemy-whatsapp-node/audio_whatsapp.mp3"
+        },
+    }
     return data
+
 
 def VideoMessage(number):
     data = {
-            "messaging_product": "whatsapp",
-            "to": number,
-            "type": "video",
-            "video": {
-                "link": "https://biostoragecloud.blob.core.windows.net/resource-udemy-whatsapp-node/video_whatsapp.mp4"
-            }
-        }
+        "messaging_product": "whatsapp",
+        "to": number,
+        "type": "video",
+        "video": {
+            "link": "https://biostoragecloud.blob.core.windows.net/resource-udemy-whatsapp-node/video_whatsapp.mp4"
+        },
+    }
     return data
+
 
 def DocumentMessage(number):
     data = {
-            "messaging_product": "whatsapp",
-            "to": number,
-            "type": "document",
-            "document": {
-                "link": "https://biostoragecloud.blob.core.windows.net/resource-udemy-whatsapp-node/document_whatsapp.pdf"
-            }
-        }
+        "messaging_product": "whatsapp",
+        "to": number,
+        "type": "document",
+        "document": {
+            "link": "https://biostoragecloud.blob.core.windows.net/resource-udemy-whatsapp-node/document_whatsapp.pdf"
+        },
+    }
     return data
+
 
 def LocationMessage(number):
     data = {
-            "messaging_product": "whatsapp",
-            "to": number,
-            "type": "location",
-            "location": {
-                "latitude": "-12.067158831865067",
-                "longitude": "-77.03377940839486",
-                "name": "Estadio Nacional del Perú",
-                "address": "C. José Díaz s/n, Cercado de Lima 15046"
-            }
-        }
+        "messaging_product": "whatsapp",
+        "to": number,
+        "type": "location",
+        "location": {
+            "latitude": "-12.067158831865067",
+            "longitude": "-77.03377940839486",
+            "name": "Estadio Nacional del Perú",
+            "address": "C. José Díaz s/n, Cercado de Lima 15046",
+        },
+    }
     return data
+
 
 def ButtonsMessage(number):
     data = {
@@ -108,79 +113,78 @@ def ButtonsMessage(number):
         "type": "interactive",
         "interactive": {
             "type": "button",
-            "body": {
-                "text": "Do you already have an account? 😁"
-            },
+            "body": {"text": "*Selecciona el tipo de evento quiere realizar*"},
             "action": {
-                "buttons": [
-                    {
-                        "type": "reply",
-                        "reply": {
-                            "id": "001",
-                            "title": "Sign up"
-                        }
-                    },
-                    {
-                        "type": "reply",
-                        "reply": {
-                            "id": "002",
-                            "title": "Log in"
-                        }
-                    }
-                ]
-            }
-        }
-    }
-    return data
-
-def ListMessage(number):
-    data = {
-        "messaging_product": "whatsapp",
-        "to": "51943662964",
-        "type": "interactive",
-        "interactive": {
-            "type": "list",
-            "body": {
-                "text": "✅ I have these options"
-            },
-            "footer": {
-                "text": "Select an option"
-            },
-            "action": {
-                "button": "See options",
+                "button": "Seleccionar",
                 "sections": [
                     {
-                        "title": "Buy and sell products",
+                        "title": "🎈 Opción 1 🎈",
                         "rows": [
                             {
-                                "id": "main-buy",
-                                "title": "Buy",
-                                "description": "Buy the best product your home"
-                            },
-                            {
-                                "id": "main-sell",
-                                "title": "Sell",
-                                "description": "Sell your products"
+                                "id": "1",
+                                "title": "Fiesta de cumpleaños ",
                             }
-                        ]
+                        ],
                     },
+                    {"title": "💍 Opción 2 💍", "rows": [{"id": "2", "title": "Boda"}]},
                     {
-                        "title": "📍center of attention",
-                        "rows": [
-                            {
-                                "id": "main-agency",
-                                "title": "Agency",
-                                "description": "Your can visit our agency"
-                            },
-                            {
-                                "id": "main-contact",
-                                "title": "Contact center",
-                                "description": "One of our agents will assist you"
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
+                        "title": "🧏‍♂️ Opción 3 🧏‍♂️",
+                        "rows": [{"id": "3", "title": "Reunión de empresa"}],
+                    },
+                ],
+            },
+        },
     }
+
+    return data
+
+
+def ListMessage(number):
+    data = (
+        {
+            "messaging_product": "whatsapp",
+            "to": "51943662964",
+            "type": "interactive",
+            "interactive": {
+                "type": "list",
+                "body": {"text": "*opciones de buffet*"},
+                "action": {
+                    "button": "Seleccionar",
+                    "sections": [
+                        {
+                            "title": "Opcion 1",
+                            "rows": [
+                                {
+                                    "id": "1",
+                                    "title": "Buffet de parrillada",
+                                    "description": "Carne asada, pollo a la parrilla, cerdo, salchichas, etc, ",
+                                }
+                            ],
+                        },
+                        {
+                            "title": "Opción 2",
+                            "rows": [
+                                {
+                                    "id": "2",
+                                    "title": "Buffet de tapas",
+                                    "description": "Pequeñas porciones de platillos como albóndigas, croquetas, bruschettas",
+                                }
+                            ],
+                        },
+                        {
+                            "title": "Opción 3",
+                            "rows": [
+                                {
+                                    "id": "3",
+                                    "title": "Buffet vegetariano",
+                                    "description": "Platos vegetarianos y veganos como lasaña de verduras",
+                                }
+                            ],
+                        },
+                    ],
+                },
+            },
+        },
+    )
+
     return data
